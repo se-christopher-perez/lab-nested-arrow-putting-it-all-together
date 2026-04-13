@@ -1,47 +1,35 @@
 
-const readline = require("readline")
-
-const readlinecl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-})
-
 const userInfo = {
   user: "user1",
   password: "password1234"
 }
 
+function createLoginTracker (user) {
 
-function createLoginTracker (password) {
+  let attemptTracker = 0
 
-  let attemptCount = 0
+  const username = user["user"]
+  const userPassword = user["password"]
 
-  const loginAttempt = (passwordAttempt) => {
-    
-    attemptCount += 1
+  return (passwordAttempt) => {
 
-    if (attemptCount > 3) {
+    attemptTracker += 1
 
-      return "Locked"
-
+    if (attemptTracker > 3) {
+      return "Account locked due to too many failed login attempts"
     }
 
-    if (password === passwordAttempt) {
-      
+    if (passwordAttempt = userPassword){
       return "Login successful"
-    
     } else {
-
-      "Login Failed"
-
+      return "Login failed"
     }
-
-    return loginAttempt
 
   }
 
 }
 
+console.log(createLoginTracker(userInfo))
 
 module.exports = {
   ...(typeof createLoginTracker !== 'undefined' && { createLoginTracker })
