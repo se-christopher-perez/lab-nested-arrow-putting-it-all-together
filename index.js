@@ -19,7 +19,7 @@ function createLoginTracker (user) {
       return "Account locked due to too many failed login attempts"
     }
 
-    if (passwordAttempt = userPassword){
+    if (passwordAttempt === userPassword){
       return "Login successful"
     } else {
       return `Attempt ${attemptCount}: Login failed`
